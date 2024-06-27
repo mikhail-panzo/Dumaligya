@@ -1,0 +1,77 @@
+RewriteEngine On
+
+# if the file does not exist, redirect back to index
+# FallbackResource /views/error404.php
+
+# rewrite rules
+#
+#
+
+# product pages
+RewriteRule ^products$ views/products.php [L]
+RewriteRule ^product$ views/single_product.php [L]
+RewriteRule ^sellers$ views/sellers.php [L]
+RewriteRule ^seller$ views/single_seller.php [L]
+
+# registration pages
+RewriteCond %{HTTP_COOKIE} register_progress=4
+RewriteRule ^register-user$ /views/registration/validate_register.php [L]
+RewriteCond %{HTTP_COOKIE} register_progress=3
+RewriteRule ^register-user$ /views/registration/seller_register.php [L]
+RewriteCond %{HTTP_COOKIE} register_progress=2
+RewriteRule ^register-user$ /views/registration/member_register.php [L]
+RewriteCond %{HTTP_COOKIE} register_progress=1
+RewriteRule ^register-user$ /views/registration/user_register.php [L]
+
+RewriteCond %{HTTP_COOKIE} add_register=1
+RewriteRule ^seller-register$ /views/add_seller_register.php [L]
+
+
+RewriteRule ^register$ views/registration/register.php [L]
+
+# login page
+
+RewriteRule ^login$ views/registration/login.php [L]
+
+# seller pages
+RewriteCond %{HTTP_COOKIE} user_type=seller
+RewriteRule ^dashboard$ views/seller_dashboard.php [L]
+
+RewriteCond %{HTTP_COOKIE} user_type=seller
+RewriteRule ^categories$ views/edit_categories.php [L]
+
+RewriteCond %{HTTP_COOKIE} user_type=seller
+RewriteRule ^add-product$ views/add_product.php [L]
+
+RewriteCond %{HTTP_COOKIE} user_type=seller
+RewriteRule ^edit-product$ views/edit_product.php [L]
+
+
+RewriteCond %{HTTP_COOKIE} user_type=seller
+RewriteRule ^orders$ views/seller_orders.php [L]
+
+RewriteCond %{HTTP_COOKIE} user_type=seller
+RewriteRule ^chat$ views/seller_chat.php [L]
+
+# member pages
+RewriteCond %{HTTP_COOKIE} user_type=member
+RewriteRule ^account$ views/member_account.php [L]
+
+RewriteCond %{HTTP_COOKIE} user_type=member
+RewriteRule ^cart$ views/cart.php [L]
+
+RewriteCond %{HTTP_COOKIE} user_type=member
+RewriteRule ^checkout$ views/checkout.php [L]
+
+RewriteCond %{HTTP_COOKIE} user_type=member
+RewriteRule ^orders$ views/orders.php [L]
+
+RewriteCond %{HTTP_COOKIE} user_type=member
+RewriteRule ^chat$ views/chat.php [L]
+
+RewriteCond %{HTTP_COOKIE} user_type=member
+RewriteRule ^review$ views/single_review.php [L]
+
+# fallbacks
+RewriteCond %{HTTP_COOKIE} !register_progress
+RewriteRule ^register-user$ /register [L]
