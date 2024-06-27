@@ -1,0 +1,10 @@
+This project is intended to be built without frameworks and be based on the fundamentals of web development (CS36 Class Requirements), that is, using only bare PHP, MySQL, JavaScript, HTML, and CSS
+
+For this, the database must be built manually.
+
+Follow these steps to set up the database:
+1. Run a local database server
+2. Create a database named 'dumaligya_database'
+3. Run the 'Main_tables.sql' script in the database folder
+
+You can run 'Purge_tables.sql' to remove the tables.
